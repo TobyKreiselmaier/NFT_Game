@@ -7,5 +7,37 @@
     <body>
         <h1>Game Website</h1>
         <h2>Game Second Website</h2>
+
+    <script>
+        // configure the game (height, width, render-type, game loop)
+
+        var config = {
+            width: 800,
+            height: 200,
+            type: Phaser.AUTO,
+            scene: {
+                preload: gamePreload,
+                create: gameCreate,
+                update: gameUpdate
+            }
+        }
+
+        function gamePreload(){
+            // loading assets
+        }
+
+        function gameCreate(){
+            // initial setup logic on the assets and other setup
+        }
+
+        function gameUpdate(){
+            // monitoring inputs and telling game how to update
+        }
+
+        var game = new Phaser.Game(config);
+
+
+    </script>
+
     <body>
 </html>
