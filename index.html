@@ -28,7 +28,7 @@
                     gravity: {
                         y: 300
                     },
-                    debug: false // shows collision boxes
+                    debug: true // shows collision boxes
                 }
             }
         }
@@ -50,19 +50,31 @@
 
             // create knight
             knight = this.physics.add.sprite(200,100,'knight');
-            knight.body.setSize(400,600,10,0); // resizing the collision box
+            knight.body.setSize(200,600,10,0); // resizing the collision box
             knight.scaleX = 0.15;
             knight.scaleY = knight.scaleX;
 
             // create the crates
             crates = this.physics.add.staticGroup();
+            
+            // floor
             crates.create(40,460,'crate');
             crates.create(120,460,'crate');
             crates.create(200,460,'crate');
             crates.create(280,460,'crate');
             crates.create(360,460,'crate');
             crates.create(440,460,'crate');
-            crates.create(520,460,'crate');
+
+            // crates in the air
+            crates.create(440,360,'crate');
+            crates.create(480,260,'crate');
+            crates.create(280,260,'crate');
+            crates.create(180,220,'crate');
+            crates.create(720,460,'crate');
+            crates.create(590,370,'crate');
+            crates.create(670,370,'crate');
+            crates.create(620,120,'crate');
+
 
             this.physics.add.collider(crates,knight);
 
