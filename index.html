@@ -24,9 +24,9 @@
                 default: 'arcade',
                 arcade: {
                     gravity: {
-                        y: 200
+                        y: 2
                     },
-                    debug: false
+                    debug: true // shows collision box
                 }
             }
         }
@@ -35,16 +35,34 @@
             // loading assets
             console.log('Game is loading assets');
             this.load.image('knight','assets/knight.png');
+            this.load.image('crate','assets/crate.png');
         }
 
         function gameCreate(){
             // initial setup logic on the assets and other setup
             console.log('Game is setting up assets');
-            this.physics.add.sprite(100, 100, 'knight');
+
+            // create knight
+            var knight = this.physics.add.sprite(200,100,'knight');
+            knight.body.setSize(400,600,10,0); // resizing the collision box
+            knight.scaleX = 0.2;
+            knight.scaleY = knight.scaleX;
+
+            // create the crates
+            var crates = this.physics.add.staticGroup();
+            crates.create(40,460,'crate');
+            crates.create(120,460,'crate');
+            crates.create(200,460,'crate');
+            crates.create(280,460,'crate');
+            crates.create(360,460,'crate');
+            crates.create(440,460,'crate');
+            crates.create(520,460,'crate');
+
+            this.physics.add.collider(crates,knight);
         }
 
         function gameUpdate(){
-            // monitoring inputs and telling game how to update - 60/sec
+            // monitoring inputs and telling game how to update - 60 x / sec
             // console.log('Game is updating');
         }
 
