@@ -13,25 +13,39 @@
 
         var config = {
             width: 800,
-            height: 200,
+            height: 500,
             type: Phaser.AUTO,
             scene: {
                 preload: gamePreload,
                 create: gameCreate,
                 update: gameUpdate
+            },
+            physics: {
+                default: 'arcade',
+                arcade: {
+                    gravity: {
+                        y: 200
+                    },
+                    debug: false
+                }
             }
         }
 
         function gamePreload(){
             // loading assets
+            console.log('Game is loading assets');
+            this.load.image('knight','assets/knight.png');
         }
 
         function gameCreate(){
             // initial setup logic on the assets and other setup
+            console.log('Game is setting up assets');
+            this.physics.add.sprite(100, 100, 'knight');
         }
 
         function gameUpdate(){
-            // monitoring inputs and telling game how to update
+            // monitoring inputs and telling game how to update - 60/sec
+            // console.log('Game is updating');
         }
 
         var game = new Phaser.Game(config);
