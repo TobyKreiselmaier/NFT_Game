@@ -11,7 +11,7 @@
     <script>
         // configure the game (height, width, render-type, game loop)
 
-        let cursors, knight, crates;
+        let cursors, knight, crates, background;
 
         let config = {
             width: 800,
@@ -26,7 +26,7 @@
                 default: 'arcade',
                 arcade: {
                     gravity: {
-                        y: 20
+                        y: 300
                     },
                     debug: false // shows collision boxes
                 }
@@ -36,6 +36,7 @@
         function gamePreload(){
             // loading assets
             console.log('Game is loading assets');
+            this.load.image('background','assets/background.png');
             this.load.image('knight','assets/knight.png');
             this.load.image('crate','assets/crate.png');
         }
@@ -44,10 +45,13 @@
             // initial setup logic on the assets and other setup
             console.log('Game is setting up assets');
 
+            // set background
+            this.add.image(300, 150, 'background');
+
             // create knight
             knight = this.physics.add.sprite(200,100,'knight');
             knight.body.setSize(400,600,10,0); // resizing the collision box
-            knight.scaleX = 0.2;
+            knight.scaleX = 0.15;
             knight.scaleY = knight.scaleX;
 
             // create the crates
