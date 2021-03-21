@@ -102,7 +102,7 @@
             // create run animation
             this.anims.create({
                key: 'knight_run',
-               frame: [
+               frames: [
                 {key: 'run_frame_1'},
                 {key: 'run_frame_2'},
                 {key: 'run_frame_3'},
@@ -121,7 +121,7 @@
             // create idle animation
             this.anims.create({
                key: 'knight_idle',
-               frame: [
+               frames: [
                 {key: 'idle_frame_1'},
                 {key: 'idle_frame_2'},
                 {key: 'idle_frame_3'},
@@ -148,17 +148,22 @@
 
             if(cursors.left.isDown){
                 knight.setVelocityX(-100);
+                knight.play('knight_run', true);
+                knight.flipX = true;
             } 
             else if(cursors.right.isDown){
                 knight.setVelocityX(100);
+                knight.play('knight_run', true);
+                knight.flipX = false;
             }
             else {
                 knight.setVelocityX(0);
-            }
+                knight.play('knight_idle', true);
+            };
 
             if(cursors.up.isDown && knight.body.touching.down){
                 knight.setVelocityY(-300);
-            } 
+            };
         }
 
         let game = new Phaser.Game(config);
