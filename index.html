@@ -11,7 +11,9 @@
     <script>
         // configure the game (height, width, render-type, game loop)
 
-        var config = {
+        let cursors, knight, crates;
+
+        let config = {
             width: 800,
             height: 500,
             type: Phaser.AUTO,
@@ -24,9 +26,9 @@
                 default: 'arcade',
                 arcade: {
                     gravity: {
-                        y: 2
+                        y: 20
                     },
-                    debug: true // shows collision box
+                    debug: false // shows collision boxes
                 }
             }
         }
@@ -43,13 +45,13 @@
             console.log('Game is setting up assets');
 
             // create knight
-            var knight = this.physics.add.sprite(200,100,'knight');
+            knight = this.physics.add.sprite(200,100,'knight');
             knight.body.setSize(400,600,10,0); // resizing the collision box
             knight.scaleX = 0.2;
             knight.scaleY = knight.scaleX;
 
             // create the crates
-            var crates = this.physics.add.staticGroup();
+            crates = this.physics.add.staticGroup();
             crates.create(40,460,'crate');
             crates.create(120,460,'crate');
             crates.create(200,460,'crate');
@@ -59,15 +61,30 @@
             crates.create(520,460,'crate');
 
             this.physics.add.collider(crates,knight);
+
+            cursors = this.input.keyboard.createCursorKeys();
         }
 
         function gameUpdate(){
             // monitoring inputs and telling game how to update - 60 x / sec
             // console.log('Game is updating');
+
+            if(cursors.left.isDown){
+                knight.setVelocityX(-100);
+            } 
+            else if(cursors.right.isDown){
+                knight.setVelocityX(100);
+            }
+            else {
+                knight.setVelocityX(0);
+            }
+
+            if(cursors.up.isDown && knight.body.touching.down){
+                knight.setVelocityY(-300);
+            } 
         }
 
-        var game = new Phaser.Game(config);
-
+        let game = new Phaser.Game(config);
 
     </script>
 
