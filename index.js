@@ -1,10 +1,10 @@
-// configure the game (height, width, render-type, game loop)
 let background, knight, crates, cursors, coinTimer, coins, scoreText, timeLeftText,
     timeLeftTimer;
 
 let score = 0;
 let secondsLeft = 60;
 let gameOver = false;
+let coinsSent = false;
 
 let config = {
     width: 800,
@@ -155,9 +155,23 @@ function gameCreate(){
 };
 
 function updateTimeLeft(){
-    if(gameOver) return;
+
+    if(gameOver){
+        if(!coinsSent){
+            let address = prompt('Please enter your blockchain address: ', "0x...");
+            if (address == null || address == ""){
+                alert('User cancelled the prompt');
+            } else {
+                mintAfterGame(address, score);
+            }
+            coinsSent = true;
+        }
+        return;
+    };
+
     secondsLeft--;
     timeLeftText.setText(secondsLeft + ' seconds left');
+    
     if(secondsLeft <= 0){
         this.physics.pause();
         gameOver = true;
