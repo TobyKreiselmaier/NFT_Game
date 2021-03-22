@@ -1,0 +1,10 @@
+{
+  "name": "SolidityGame",
+  "version": "1.0.0",
+  "main": "truffle-config.js",
+  "license": "MIT",
+  "dependencies": {
+    "@truffle/hdwallet-provider": "^1.2.4",
+    "openzeppelin-solidity": "^3.4.1"
+  }
+}
