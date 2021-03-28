@@ -1,10 +1,12 @@
 let background, knight, crates, cursors, coinTimer, coins, scoreText, timeLeftText,
-    timeLeftTimer;
+    timeLeftTimer, game;
 
 let score = 0;
 let secondsLeft = 60;
 let gameOver = false;
-let coinsSent = false;
+let COIN_GENERATION_INTERVAL = 3000; 
+let PLAYER_SPEED = 200;          
+let GAME_SECOND = 1000;          // Each millisecond in game is this many in real time
 
 let config = {
     width: 800,
@@ -25,6 +27,10 @@ let config = {
         }
     }
 };
+
+getUserItems(function() {
+    game = new Phaser.Game(config)
+});
 
 function gamePreload(){
     // loading assets
@@ -135,20 +141,20 @@ function gameCreate(){
     scoreText = this.add.text(16, -200, 'NRG Bag: ' + score,
         {fontSize: '32px', fill: '#000'});
 
-    timeLeftText = this.add.text(16, -166, secondsLeft + ' seconds left',
-        {fontSize: '32px', fill: '#f00'});
+    timeLeftText = this.add.text(16, -70, secondsLeft + ' seconds left',
+        {fontSize: '16px', fill: '#f00'});
 
     cursors = this.input.keyboard.createCursorKeys();
 
     coinTimer = this.time.addEvent({             // defines how often money rains
-        delay: Phaser.Math.Between(1000,3000),   // between 1-3 secs
+        delay: Phaser.Math.Between(0, COIN_GENERATION_INTERVAL),
         callback: generateCoins,
         callbackScope: this,                     // where is the function located
         repeat: -1                               // indefinitely
     });
 
-    timeLeftTimer = this.time.addEvent({             // defines how often money rains
-        delay: 1000,   
+    timeLeftTimer = this.time.addEvent({         // defines how often money rains
+        delay: GAME_SECOND,   
         callback: updateTimeLeft,
         callbackScope: this,                     // where is the function located
         repeat: -1                               
@@ -158,17 +164,8 @@ function gameCreate(){
 function updateTimeLeft(){
 
     if(gameOver){
-        if(!coinsSent){
-            let address = prompt('Please enter your wallet address: ', "0x...");
-            if (address == null || address == ""){
-                alert('User cancelled the prompt');
-            } else {
-                mintAfterGame(score);
-            }
-            coinsSent = true;
-        }
         return;
-    };
+    }
 
     secondsLeft--;
     timeLeftText.setText(secondsLeft + ' seconds left');
@@ -177,7 +174,7 @@ function updateTimeLeft(){
         this.physics.pause();
         gameOver = true;
     };
-}
+};
 
 function generateCoins(){
     
@@ -212,12 +209,12 @@ function gameUpdate(){
     // monitoring inputs and telling game how to update - 60 x / sec
 
     if(cursors.left.isDown){
-        knight.setVelocityX(-200);
+        knight.setVelocityX(-PLAYER_SPEED);
         knight.play('knight_run', true);
         knight.flipX = true;
     } 
     else if(cursors.right.isDown){
-        knight.setVelocityX(200);
+        knight.setVelocityX(PLAYER_SPEED);
         knight.play('knight_run', true);
         knight.flipX = false;
     }
@@ -230,5 +227,3 @@ function gameUpdate(){
         knight.setVelocityY(-500);
     };
 };
-
-let game = new Phaser.Game(config);

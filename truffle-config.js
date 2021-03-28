@@ -10,7 +10,7 @@ module.exports = {
             mnemonic: {
               phrase: mnemonic
             },
-            providerOrUrl: 'https://nodeapi.test.energi.network', // 'http://172.31.77.180:49796/',
+            providerOrUrl: 'https://nodeapi.test.energi.network',
             derivationPath: "m/44'/49797'/0'/0/"
           }),
       network_id: '49797',

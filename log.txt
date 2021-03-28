@@ -1,0 +1,111 @@
+$ truffle console --network testnet
+truffle(testnet)> deploy
+
+Compiling your contracts...
+===========================
+> Everything is up to date, there is nothing to compile.
+
+
+
+Starting migrations...
+======================
+> Network name:    'testnet'
+> Network id:      49797
+> Block gas limit: 40000000 (0x2625a00)
+
+
+1_initial_migration.js
+======================
+
+   Deploying 'Migrations'
+   ----------------------
+   > transaction hash:    0x5eec5ca43a4a96c1e47c190a90581d654fcd722f4236962430a0d9200740836d
+   > Blocks: 0            Seconds: 20
+   > contract address:    0x16ef32bd8d07adE3590A79dFDf5A059E29435257
+   > block number:        594173
+   > block timestamp:     1616956493
+   > account:             0xc7E95959c72B7574DDe42237445327fF8E937bEB
+   > balance:             13.37636424
+   > gas used:            263741 (0x4063d)
+   > gas price:           20 gwei
+   > value sent:          0 ETH
+   > total cost:          0.00527482 ETH
+
+
+   > Saving migration to chain.
+   > Saving artifacts
+   -------------------------------------
+   > Total cost:          0.00527482 ETH
+
+
+2_token_migration.js
+====================
+
+   Deploying 'GameToken'
+   ---------------------
+   > transaction hash:    0xae2bf04eb6eac31181af84872f9ddc3a6cbf24e61dae6c185d05218e5eae4084
+   > Blocks: 0            Seconds: 68
+   > contract address:    0x045305b0f16381cFd5Ff5D4B74A4d8bE21474f06
+   > block number:        594176
+   > block timestamp:     1616956685
+   > account:             0xc7E95959c72B7574DDe42237445327fF8E937bEB
+   > balance:             13.32887296
+   > gas used:            2332541 (0x23977d)
+   > gas price:           20 gwei
+   > value sent:          0 ETH
+   > total cost:          0.04665082 ETH
+
+
+   > Saving migration to chain.
+   > Saving artifacts
+   -------------------------------------
+   > Total cost:          0.04665082 ETH
+
+
+3_marketplace_migration.js
+==========================
+
+   Deploying 'Marketplace'
+   -----------------------
+   > transaction hash:    0x5e3917315a12244a6d9ff7611475c47316dca00b2b06f00beb9b044b439a7560
+   > Blocks: 0            Seconds: 56
+   > contract address:    0xaDfc41eF5B92F6ab0DD231B73c8625F2d2Bf9054
+   > block number:        594178
+   > block timestamp:     1616956800
+   > account:             0xc7E95959c72B7574DDe42237445327fF8E937bEB
+   > balance:             13.32051342
+   > gas used:            390954 (0x5f72a)
+   > gas price:           20 gwei
+   > value sent:          0 ETH
+   > total cost:          0.00781908 ETH
+
+
+   > Saving migration to chain.
+   > Saving artifacts
+   -------------------------------------
+   > Total cost:          0.00781908 ETH
+
+
+4_create_tokens.js
+==================
+
+   > Saving migration to chain.
+   -------------------------------------
+   > Total cost:                   0 ETH
+
+
+Summary
+=======
+> Total deployments:   3
+> Final cost:          0.05974472 ETH
+
+
+- Blocks: 0            Seconds: 0
+- Saving migration to chain.
+- Blocks: 0            Seconds: 0
+- Saving migration to chain.
+- Blocks: 0            Seconds: 0
+- Saving migration to chain.
+- Saving migration to chain.
+
+truffle(testnet)>

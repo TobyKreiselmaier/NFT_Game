@@ -1,10 +1,24 @@
 {
-  "name": "SolidityGame",
+  "name": "ERC1155_Token_Implementation",
   "version": "1.0.0",
   "main": "truffle-config.js",
-  "license": "MIT",
+  "directories": {
+    "test": "test"
+  },
   "dependencies": {
-    "@truffle/hdwallet-provider": "^1.2.4",
-    "openzeppelin-solidity": "^3.4.1"
-  }
+    "@truffle/hdwallet-provider": "1.2.2",
+    "bignumber.js": "^4.1.0"
+  },
+  "devDependencies": {
+    "truffle": "5.2.5"
+  },
+  "scripts": {
+    "test": "truffle test"
+  },
+  "keywords": [
+    "coin",
+    "ethereum"
+  ],
+  "author": "The Rainmaker",
+  "license": "Apache-2.0"
 }
