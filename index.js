@@ -80,6 +80,7 @@ function gameCreate(){
     crates.create(280,460,'crate');
     crates.create(360,460,'crate');
     crates.create(440,460,'crate');
+    crates.create(520,460,'crate');
 
     // crates in the air
     crates.create(440,360,'crate');
@@ -131,10 +132,10 @@ function gameCreate(){
 
     this.physics.add.collider(crates,knight);
 
-    scoreText = this.add.text(16, 16, 'NRG Bag: ' + score,
+    scoreText = this.add.text(16, -200, 'NRG Bag: ' + score,
         {fontSize: '32px', fill: '#000'});
 
-    timeLeftText = this.add.text(16, 66, secondsLeft + ' seconds left',
+    timeLeftText = this.add.text(16, -166, secondsLeft + ' seconds left',
         {fontSize: '32px', fill: '#f00'});
 
     cursors = this.input.keyboard.createCursorKeys();
@@ -158,11 +159,11 @@ function updateTimeLeft(){
 
     if(gameOver){
         if(!coinsSent){
-            let address = prompt('Please enter your blockchain address: ', "0x...");
+            let address = prompt('Please enter your wallet address: ', "0x...");
             if (address == null || address == ""){
                 alert('User cancelled the prompt');
             } else {
-                mintAfterGame(address, score);
+                mintAfterGame(score);
             }
             coinsSent = true;
         }

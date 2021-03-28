@@ -1,4 +1,6 @@
-const web3 = new Web3(new Web3.providers.HttpProvider("http://127.0.0.1:9545/"));
+web3 = new Web3(web3.currentProvider);
+
+ethereum.enable(); //Do you want to accept to work with MetaMask?
 
 const abi = [
     {
@@ -324,7 +326,7 @@ const abi = [
     }
   ];
 
-const contract = new web3.eth.Contract(abi, "0xD506f7F091399306aE70E3A3ECCe865B0294AB32"); //add when deployed.
+const contract = new web3.eth.Contract(abi, "0x019E9590Ad2dDaeD10FE3B525b0E7807727F9900");
 
 function mintAfterGame(address, amount) {
     contract.methods.mint(address, amount).send({from: address})
